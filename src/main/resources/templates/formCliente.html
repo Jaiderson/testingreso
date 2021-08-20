@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Formulario Clientes</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-4">
+		<div class="coll-sm-4">
+			<form th:action="@{/guardarCliente}" th:object=${cliente}  method="POST">
+				<div class="card">
+					<div class="card-header">
+						<h3>FORMULARIO CLIENTE</h3>
+					</div>
+					<div class="card-body">
+						<div class="form-group">
+							<label>Id Cliente</label>
+							<input th:field="*{idCliente}" type="text" class="form-control" disabled="disabled"/>
+						</div>
+						<div class="form-group">
+							<label>Nombre Cliente</label>
+							<input th:field="*{nombre}" type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Direccion</label>
+							<input th:field="*{direccion}" type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Telefono</label>
+							<input th:field="*{telefono}" type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>E-Mail</label>
+							<input th:field="*{mail}" type="text" class="form-control"/>
+						</div>
+					</div>
+					<div class="card-footer">
+						<input type="submit" value="Guardar" class="btn btn-success">
+					</div>				
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

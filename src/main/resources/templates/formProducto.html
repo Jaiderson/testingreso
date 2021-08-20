@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Formulario Producto</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-4">
+		<div class="coll-sm-4">
+			<form th:action="@{/guardarProducto}" th:object=${producto}  method="POST">
+				<div class="card">
+					<div class="card-header">
+						<h3>FORMULARIO PRODUCTO</h3>
+					</div>
+					<div class="card-body">
+						<div class="form-group">
+							<label>Id Producto</label>
+							<input th:field="*{idProducto}" type="text" class="form-control" disabled="disabled"/>
+						</div>
+						<div class="form-group">
+							<label>Codigo Producto</label>
+							<input th:field="*{codProducto}" type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Nombre Producto</label>
+							<input th:field="*{nombre}" type="text" class="form-control"/>
+						</div>
+					</div>
+					<div class="card-footer">
+						<input type="submit" value="Guardar" class="btn btn-success">
+					</div>				
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

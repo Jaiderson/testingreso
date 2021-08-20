@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>ADMINISTRAR PRODUCTOS</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-4">
+		<a th:href="@{/nuevoProducto}" class="btn btn-primary">Nuevo Producto</a>
+		<table  class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>CODIGO</th>
+					<th>NOMBRE</th>
+					<th>ACCIONES</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="producto:${productos}">
+					<td th:text="${producto.idProducto}"/>
+					<td th:text="${producto.codProducto}"/>
+					<td th:text="${producto.nombre}"/>
+					<td>
+						<a th:href="@{/editarProducto/}+${producto.idProducto}" class="btn btn-warning">Editar  </a>
+						<a th:href="@{/eliminarProducto/}+${producto.idProducto}" class="btn btn-danger" >Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

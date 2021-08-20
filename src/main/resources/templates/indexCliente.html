@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>ADMINISTRAR CLIENTES</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container mt-4">
+		<a th:href="@{/nuevoCliente}" class="btn btn-primary">Nuevo Cliente</a>
+		<table  class="table">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NOMBRE</th>
+					<th>DIRECCION</th>
+					<th>TELEFONO</th>
+					<th>E-MAIL</th>
+					<th>ACCIONES</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="cliente:${clientes}">
+					<td th:text="${cliente.idCliente}"/>
+					<td th:text="${cliente.nombre}"/>
+					<td th:text="${cliente.direccion}"/>
+					<td th:text="${cliente.telefono}"/>
+					<td th:text="${cliente.mail}"/>
+					<td>
+						<a th:href="@{/editarCliente/}+${cliente.idCliente}" class="btn btn-warning">Editar  </a>
+						<a th:href="@{/eliminarCliente/}+${cliente.idCliente}" class="btn btn-danger" >Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
