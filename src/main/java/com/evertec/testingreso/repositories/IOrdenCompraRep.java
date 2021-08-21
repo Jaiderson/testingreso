@@ -23,6 +23,6 @@ public interface IOrdenCompraRep extends JpaRepository<OrdenCompra, Long>{
 	 * 
 	 * @return Lista vacia si no se encuentra ordenes de compra, en caso contrario el listado de ordenes de compra.
 	 */
-	public List<OrdenCompra> findByAll();
+	public List<OrdenCompra> findAll();
 
 }

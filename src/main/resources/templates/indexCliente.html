@@ -28,11 +28,14 @@
 					<td th:text="${cliente.mail}"/>
 					<td>
 						<a th:href="@{/editarCliente/}+${cliente.idCliente}" class="btn btn-warning">Editar  </a>
-						<a th:href="@{/eliminarCliente/}+${cliente.idCliente}" class="btn btn-danger" >Eliminar</a>
+						<a th:onclick="eliminarAction([[${cliente.idCliente}]], '/eliminarCliente/', '/listarClientes')" class="btn btn-danger" >Eliminar</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="funciones.js"></script>
 </body>
 </html>

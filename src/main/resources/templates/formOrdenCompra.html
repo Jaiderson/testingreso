@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Formulario Ordenes de Compra</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script type="text/javascript" src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="modal-body" id="clienteModal" role="dialog">
+		<form th:action="@{/listarClientes}" method="GET">
+			<div class="container-fluid">
+				<table  class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>NOMBRE</th>
+							<th>DIRECCION</th>
+							<th>TELEFONO</th>
+							<th>E-MAIL</th>
+							<th>ACCIONES</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cliente:${clientes}">
+							<td th:text="${cliente.idCliente}"/>
+							<td th:text="${cliente.nombre}"/>
+							<td th:text="${cliente.direccion}"/>
+							<td th:text="${cliente.telefono}"/>
+							<td th:text="${cliente.mail}"/>
+							<td>
+								<a th:href="@{/selectCliente/}+${cliente.idCliente}" class="btn btn-warning">Seleccionar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="container mt-4">
+		<div class="coll-sm-4">
+			<form th:action="@{/guardarOrden}" th:object=${ordenCompra}  method="POST">
+				<div class="card">
+					<div class="card-header">
+						<h3>FORMULARIO ORDENES DE COMPRA</h3>
+					</div>
+					<div class="card-body">
+						<div class="form-group">
+							<label>Id Orden</label>
+							<input th:field="*{idOrden}" type="text" class="form-control" disabled="disabled"/>
+						</div>
+						<div class="form-group">
+							<label>Cliente</label>
+							<input type="text" class="form-control"/>
+							<button type="button" class="btn btn-primary" data-toggle="#clienteModal" >Buscar</button>
+						</div>
+						<div class="form-group">
+							<label>Producto</label>
+							<input type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Direccion</label>
+							<input th:field="*{cliente}" type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Cantidad</label>
+							<input th:field="*{cantidad}" type="text" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<label>Valor Total</label>
+							<input th:field="*{valorCompra}" type="text" class="form-control"/>
+						</div>
+					</div>
+					<div class="card-footer">
+						<input type="submit" value="Guardar" class="btn btn-success">
+					</div>				
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
