@@ -27,7 +27,9 @@
 					<td th:text="${ordenCompra.producto.nombre}"/>
 					<td th:text="${ordenCompra.cantidad}"/>
 					<td th:text="${ordenCompra.valorCompra}"/>
-					<td th:text="${ordenCompra.pago}"/>
+					<td>
+						<button type="button" th:onclick="pagarAction([[${ordenCompra.idOrden}]])" class="btn btn-info" th:text="${ordenCompra.pago.estado}"></button >
+					</td>
 					<td>
 						<a th:href="@{/editarOrden/}+${ordenCompra.idOrden}" class="btn btn-warning">Editar  </a>
 						<a th:onclick="eliminarAction([[${ordenCompra.idOrden}]], '/eliminarOrden/', '/listarOrdenes')" class="btn btn-danger" >Eliminar</a>

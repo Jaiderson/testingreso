@@ -58,4 +58,10 @@ public class OrdenCompraController {
 		return "redirect:/listarOrdenes";
 	}
 
+	@GetMapping("/pagarOrden/{idOrden}")
+	public String pagarOrdenCompra(@PathVariable long idOrden, Model model) {
+		
+		return "redirect:/listarProductos";
+	}
+
 }

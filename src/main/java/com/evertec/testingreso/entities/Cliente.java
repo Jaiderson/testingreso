@@ -14,10 +14,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name="clientes")
-@AllArgsConstructor @NoArgsConstructor @Builder @Data
+@AllArgsConstructor @NoArgsConstructor @ToString @Builder @Data
 public class Cliente {
 
 	@Id

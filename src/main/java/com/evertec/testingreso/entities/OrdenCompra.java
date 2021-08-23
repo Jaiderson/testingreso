@@ -11,18 +11,23 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
 @Table(name="orden_compras")
-@AllArgsConstructor @ToString @NoArgsConstructor @Builder @Data
+@AllArgsConstructor @ToString @Builder @Data
 public class OrdenCompra {
+
+	public OrdenCompra() {
+		super();
+		this.cliente = new Cliente();
+		this.producto = new Producto();
+		this.pago = new Pago();
+	}
 
 	@Id
 	@Column (name="idorden")
@@ -37,21 +42,18 @@ public class OrdenCompra {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idproducto")
 	@NotNull(message = "Debe especificar el producto.")
-	private Producto proucto;
+	private Producto producto;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idpago")
 	private Pago pago;
 
 	@Column(name="cantidad")
-	@Size(min = 1)
 	@Positive(message = "La cantidad debe ser positiva. ")
-	private int cantidad;
+	private Integer cantidad;
 
 	@Column(name="valor")
-	@Size(min = 1)
 	@Positive(message = "El valor debe ser positivo. ")
-	private double valorCompra;
-
+	private Double valorCompra;
 	
 }

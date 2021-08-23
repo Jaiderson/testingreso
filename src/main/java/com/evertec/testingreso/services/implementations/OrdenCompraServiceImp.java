@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.evertec.testingreso.entities.OrdenCompra;
 import com.evertec.testingreso.repositories.IOrdenCompraRep;
+import com.evertec.testingreso.repositories.IPagoRep;
 import com.evertec.testingreso.services.IOrdenCompraService;
 
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,9 @@ public class OrdenCompraServiceImp implements IOrdenCompraService{
 
 	@Autowired
 	private final IOrdenCompraRep ordenCompraRep;
+
+	@Autowired
+	private final IPagoRep pagoRep;
 
 	@Override
 	public OrdenCompra buscarOrdenCompraById(Long idOrden) {
@@ -29,6 +33,7 @@ public class OrdenCompraServiceImp implements IOrdenCompraService{
 		if(null != ordenCompraDb) {
 			return ordenCompraDb;
 		}
+		pagoRep.save(ordenCompra.getPago());
 		return ordenCompraRep.save(ordenCompra);
 	}
 

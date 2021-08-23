@@ -1,5 +1,7 @@
 package com.evertec.testingreso.entities;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -14,13 +16,23 @@ import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
 @Table(name="pagos")
-@AllArgsConstructor @ToString @NoArgsConstructor @Builder @Data
+@AllArgsConstructor @ToString @Builder @Data
 public class Pago {
+
+	public static final String ESTADO_REEJECUTADO = "REJECTED";
+	public static final String ESTADO_CREADO = "CREATED";
+	public static final String ESTADO_PAGADO = "PAYED";
+
+	public Pago() {
+		this.estado = ESTADO_CREADO;
+		LocalDateTime fechaCrea = LocalDateTime.now();
+		this.fechaCreacion = Date.from(fechaCrea.atZone(ZoneId.systemDefault()).toInstant());
+		this.detalle = estado + "|" + fechaCrea.toString();
+	}
 
 	@Id
 	@Column (name="idpago")
@@ -33,6 +45,7 @@ public class Pago {
 	private String estado;
 
 	@Column(name="fecreacion")
+	@NotNull(message = "Debe registrar fecha de creación del registro  de pago. ")
 	private Date fechaCreacion;
 
 	@Column(name="fepago")

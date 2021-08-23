@@ -30,10 +30,13 @@ function eliminarAction(id, urlAction, urlRef){
 	});
 }
 
-/*
-$(document).ready(function(){
-	$('.table .eBtn').on('click', function(){
-		$('.myForm #clienteModal').modal();
-	});
-})
-*/
+function pagarAction(id){
+				Swal.fire({
+				title: "¡El registro "+id+" no fue eliminado!",
+				type: "warning"
+			});
+	
+	
+}
+
+

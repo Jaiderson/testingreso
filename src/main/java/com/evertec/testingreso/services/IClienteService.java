@@ -56,4 +56,5 @@ public interface IClienteService {
 	 */
 	public List<Cliente> consultarClientes();
 
+	public List<Cliente> buscarClientesPorNombre(String keyword);
 }

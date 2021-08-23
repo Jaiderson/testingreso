@@ -62,4 +62,9 @@ public class ClienteServiceImp implements IClienteService{
 		return clienteRep.findByNombre(nomCliente);
 	}
 
+	@Override
+	public List<Cliente> buscarClientesPorNombre(String nomCliente) {
+		return clienteRep.findByKeyword(nomCliente);
+	}
+
 }
